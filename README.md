@@ -26,7 +26,7 @@ This is a work in progress and not actively maintained, don't expect frequent up
 
 ## Human Shaders
 
-Human Shaders and it's resources (All the content inside "HumanShaders" folder) are licensed under MIT and CC BY 4.0 Licenses.
+Human Shaders and its resources (All the content inside "HumanShaders" folder) are licensed under MIT and CC BY 4.0 Licenses.
 
 
 ## Digital Emily 2

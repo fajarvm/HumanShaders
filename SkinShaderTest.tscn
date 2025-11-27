@@ -77,6 +77,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
 use_debanding = true
+scaling_3d_scale = 1.0
 anisotropic_filtering_level = 4
 positional_shadow_atlas_size = 16384
 size = Vector2i(1920, 1080)
@@ -162,6 +163,7 @@ rotation_sensitivity = 0.2
 world_env = NodePath("../WorldEnvironment")
 
 [node name="LightingSetup1" type="Node3D" parent="SubViewportContainer/SubViewport/Lighting"]
+visible = false
 script = ExtResource("14_yjmae")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/Lighting/LightingSetup1"]
@@ -257,7 +259,6 @@ directional_shadow_max_distance = 4.0
 
 [node name="LightingSetup3" type="Node3D" parent="SubViewportContainer/SubViewport/Lighting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0632671)
-visible = false
 script = ExtResource("14_yjmae")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport/Lighting/LightingSetup3"]

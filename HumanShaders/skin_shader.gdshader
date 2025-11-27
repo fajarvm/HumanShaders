@@ -104,6 +104,10 @@ vec3 custom_normal(vec3 normal_map){
 	return normalize(TBN * normal_tangent);
 }
 
+float ScreenSpaceDither12(vec2 vScreenPos, float time){
+	float vDither = dot( vec2( 171.0, 231.0 ), vScreenPos.xy + time); 
+	return fract(vDither / 53.2);
+}
 void fragment() {
 	vec2 base_uv = UV;
 	TBN = mat3(TANGENT, -BINORMAL, NORMAL);
@@ -178,8 +182,11 @@ void fragment() {
 				sss_strength_value += (sss_tex * 2.);
 			}
 			if (use_noise){
+				vec2 ts = vec2(textureSize(texture_sss_noise, 0)) * 0.85;
+				vec2 dither_uv = mod(FRAGCOORD.xy, ts) / ts + (TIME * 2.5);
 				vec2 tiling_screen_uv = FRAGCOORD.xy / (0.64 * -1.);
-				float noise = 3.* texture(texture_sss_noise, tiling_screen_uv).r;// + vec2(1000. * TIME)).r;
+				float noise = 3.* texture(texture_sss_noise, dither_uv).r;// + vec2(1000. * TIME)).r;
+				//noise = 2.0 * ScreenSpaceDither12(FRAGCOORD.xy, TIME * .50);
 				sss_strength_value *= noise;
 				//ALBEDO = vec3(noise);
 			}
